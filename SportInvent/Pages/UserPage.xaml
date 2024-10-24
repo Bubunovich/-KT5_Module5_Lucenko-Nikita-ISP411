@@ -1,0 +1,60 @@
+﻿<Page x:Class="SportInvent.Pages.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SportInvent.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="UserPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView x:Name="UserListView"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding SurName }"></TextBlock>
+                                <TextBlock Text="{Binding Name }"></TextBlock>
+                                <TextBlock Text="{Binding MiddleName }"></TextBlock>
+ 
+                            </StackPanel>
+                            <TextBlock Text="{Binding Email}"></TextBlock>
+                            <TextBlock Text="{Binding Birthday}"></TextBlock>
+                            <TextBlock Text="{Binding PhoneNumber}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" 
+                                   Text="{Binding RoleTable.Role}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Grid Grid.Row="1">
+            <Button Content="Назад" 
+                x:Name="GoBackButton" 
+                Click="GoBackButton_Click" HorizontalAlignment="Left"
+                    VerticalAlignment="Center" Margin="30,0,0,0"></Button>
+            <Button Content="Добавить" x:Name="AppButton" Click="AppButton_Click"
+                    VerticalAlignment="Center" HorizontalAlignment="Right"
+                    Margin="0,0,30,0"></Button>
+        </Grid>
+        
+        
+        
+    </Grid>
+</Page>

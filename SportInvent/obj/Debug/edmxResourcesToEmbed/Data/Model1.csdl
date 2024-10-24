@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KT5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="GenderTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_GenderTable" FromRole="GenderTable" ToRole="User" />
+  </EntityType>
+  <EntityType Name="RoleTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_RoleTable" FromRole="RoleTable" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="UserRole" Type="Int32" />
+    <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Seria" Type="Int32" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="LastVhod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeVhod" Type="Int32" />
+    <Property Name="UserGender" Type="Int32" />
+    <NavigationProperty Name="GenderTable" Relationship="Self.FK_User_GenderTable" FromRole="User" ToRole="GenderTable" />
+    <NavigationProperty Name="RoleTable" Relationship="Self.FK_User_RoleTable" FromRole="User" ToRole="RoleTable" />
+    <NavigationProperty Name="VhodTable" Relationship="Self.FK_User_VhodTable" FromRole="User" ToRole="VhodTable" />
+  </EntityType>
+  <EntityType Name="VhodTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="TipVhoda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_VhodTable" FromRole="VhodTable" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_User_GenderTable">
+    <End Role="GenderTable" Type="Self.GenderTable" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenderTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_RoleTable">
+    <End Role="RoleTable" Type="Self.RoleTable" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_VhodTable">
+    <End Role="VhodTable" Type="Self.VhodTable" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VhodTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TypeVhod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KT5Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="GenderTable" EntityType="Self.GenderTable" />
+    <EntitySet Name="RoleTable" EntityType="Self.RoleTable" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="VhodTable" EntityType="Self.VhodTable" />
+    <AssociationSet Name="FK_User_GenderTable" Association="Self.FK_User_GenderTable">
+      <End Role="GenderTable" EntitySet="GenderTable" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_RoleTable" Association="Self.FK_User_RoleTable">
+      <End Role="RoleTable" EntitySet="RoleTable" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_VhodTable" Association="Self.FK_User_VhodTable">
+      <End Role="VhodTable" EntitySet="VhodTable" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

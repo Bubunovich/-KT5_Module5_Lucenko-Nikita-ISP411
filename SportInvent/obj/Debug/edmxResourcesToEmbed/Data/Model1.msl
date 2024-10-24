@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KT5ModelContainer" CdmEntityContainer="KT5Entities1">
+    <EntitySetMapping Name="GenderTable">
+      <EntityTypeMapping TypeName="KT5Model.GenderTable">
+        <MappingFragment StoreEntitySet="GenderTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleTable">
+      <EntityTypeMapping TypeName="KT5Model.RoleTable">
+        <MappingFragment StoreEntitySet="RoleTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="KT5Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="SurName" ColumnName="SurName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Seria" ColumnName="Seria" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="LastVhod" ColumnName="LastVhod" />
+          <ScalarProperty Name="TypeVhod" ColumnName="TypeVhod" />
+          <ScalarProperty Name="UserGender" ColumnName="UserGender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VhodTable">
+      <EntityTypeMapping TypeName="KT5Model.VhodTable">
+        <MappingFragment StoreEntitySet="VhodTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TipVhoda" ColumnName="TipVhoda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
